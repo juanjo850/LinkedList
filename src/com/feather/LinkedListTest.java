@@ -47,6 +47,17 @@ class LinkedListTest {
     }
 
     @org.junit.jupiter.api.Test
+    void pushGenerics() {
+        //arrange
+        LinkedList<String> l=new LinkedList<String>();
+        String s="Hello";
+        //act
+        l.push(s);
+        //assert
+        assertTrue(l.find(s));
+    }
+
+    @org.junit.jupiter.api.Test
     void removeHeadRemoved() {
         //arrange
         LinkedList l=new LinkedList();
@@ -112,5 +123,19 @@ class LinkedListTest {
         //act
         //assert
         assertTrue(l.find(n));
+    }
+
+    @org.junit.jupiter.api.Test
+    void findGeneric() {
+        //arrange
+        LinkedList<LinkedList<Character>> l=new LinkedList<LinkedList<Character>> ();
+        LinkedList<Character> l2=new LinkedList<Character>();
+        Character c='a';
+        l2.insert(c);
+        l.insert(l2);
+        //act
+        //assert
+        assertTrue(l2.find(c));
+        assertTrue(l.find(l2));
     }
 }

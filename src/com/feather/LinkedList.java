@@ -1,13 +1,13 @@
 package com.feather;
 
-public class LinkedList {
+public class LinkedList <E>{
 
-    private Node _head;
+    private Node<E> _head;
     private int _size;
 
-    public void insert(int data){
+    public void insert(E data){
 
-        Node node= new Node(data);
+        Node<E> node= new Node<E>(data);
 
         _size=_size+1;
 
@@ -16,24 +16,24 @@ public class LinkedList {
             return;
         }
 
-        Node aux=_head;
+        Node<E> aux=_head;
         while(aux.getNext()!=null){
             aux=aux.getNext();
         }
         aux.setNext(node);
     }
-    public void push(int data){
-        Node node= new Node(data),
+    public void push(E data){
+        Node<E> node= new Node<E>(data),
             aux=_head;
 
         node.setNext(aux);
         _head=node;
         _size=_size+1;
     }
-    public void remove(int data){
+    public void remove(E data){
 
         if(_head==null) return; //defensive programing
-        Node aux=_head;
+        Node<E> aux=_head;
 
         if(aux.getData()==data){
             if(aux.getNext()!=null) {
@@ -44,7 +44,7 @@ public class LinkedList {
             return;
         }
 
-        Node next= aux.getNext();
+        Node<E> next= aux.getNext();
 
         while(next!=null){
             if(next.getData()==data){
@@ -58,11 +58,11 @@ public class LinkedList {
         }
 
     }
-    public int removeAll(int data){
+    public int removeAll(E data){
 
         if(_head==null) return 0; //defensive programing
 
-        Node aux=_head;
+        Node<E> aux=_head;
         int del=0;
 
         while(aux.getData()==data){
@@ -71,7 +71,7 @@ public class LinkedList {
             del=+1;
         }
 
-        Node next= aux.getNext();
+        Node<E> next= aux.getNext();
 
         while(next!=null){
             if(next.getData()==data){
@@ -84,10 +84,10 @@ public class LinkedList {
         _size=-del;
         return del;
     }
-    public boolean find(int data){
+    public boolean find(E data){
         if(_head==null) return false; //defensive programing
 
-        Node aux=_head;
+        Node<E> aux=_head;
         while(aux!=null){
             if(aux.getData()==data) return true;
 
